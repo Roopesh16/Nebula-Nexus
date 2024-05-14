@@ -3,6 +3,7 @@ using NebulaNexus.UI;
 using NebulaNexus.Player;
 using NebulaNexus.Utilities;
 using NebulaNexus.Bullet;
+using NebulaNexus.Enemy;
 
 namespace NebulaNexus.Main
 {
@@ -18,7 +19,16 @@ namespace NebulaNexus.Main
         [SerializeField] private BulletScriptableObject bulletSO;
         [SerializeField] private Transform bulletParent;
 
+        [Header("Enemy Service")]
+        [SerializeField] private EnemyView enemyView;
+        [SerializeField] private EnemyScriptableObject enemyScriptableObject;
+        [SerializeField] private BulletView enemyBulletPrefab;
+        [SerializeField] private BulletScriptableObject enemyBulletSO;
+        [SerializeField] private Transform enemyBulletParent;
+
+
         public PlayerService PlayerService { get; private set; }
+        public EnemyService EnemyService { get; private set; }
         public UIService UIService => uIService;
 
         /// <summary>
@@ -36,6 +46,8 @@ namespace NebulaNexus.Main
         private void CreateInstance()
         {
             PlayerService = new PlayerService(playerView, playerSO, bulletPrefab, bulletSO, bulletParent);
+            EnemyService = new EnemyService(enemyView, enemyScriptableObject, enemyBulletSO,
+                                            enemyBulletPrefab, enemyBulletParent);
         }
     }
 }
