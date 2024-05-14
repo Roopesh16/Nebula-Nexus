@@ -838,6 +838,8 @@ MonoBehaviour:
   uIService: {fileID: 1325927410}
   playerView: {fileID: 1547070337}
   playerSO: {fileID: 11400000, guid: cadd99d1dd6a54a48b9f77b4e9a3b2a6, type: 2}
+  bulletPrefab: {fileID: 7214225919482936626, guid: 95ab3581ecfdacb4b8ba26175876d360, type: 3}
+  bulletSO: {fileID: 11400000, guid: f397182dcab08b54fb5a6aae75f01149, type: 2}
 --- !u!1 &1307996169
 GameObject:
   m_ObjectHideFlags: 0
