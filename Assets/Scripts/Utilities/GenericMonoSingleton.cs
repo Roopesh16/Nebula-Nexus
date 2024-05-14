@@ -1,19 +1,22 @@
 using UnityEngine;
 
-public class GenericMonoSingleton<T> : MonoBehaviour where T : GenericMonoSingleton<T>
+namespace NebulaNexus.Utilities
 {
-    private static T instance = null;
-
-    public static T Instance { get { return instance; } }
-
-    /// <summary>
-    /// Generic Base Awake Call
-    /// </summary>
-    protected virtual void Awake()
+    public class GenericMonoSingleton<T> : MonoBehaviour where T : GenericMonoSingleton<T>
     {
-        if (instance == null)
-            instance = (T)this;
-        else if (instance != this)
-            Destroy(gameObject);
+        private static T instance = null;
+
+        public static T Instance { get { return instance; } }
+
+        /// <summary>
+        /// Generic Base Awake Call
+        /// </summary>
+        protected virtual void Awake()
+        {
+            if (instance == null)
+                instance = (T)this;
+            else if (instance != this)
+                Destroy(gameObject);
+        }
     }
 }
