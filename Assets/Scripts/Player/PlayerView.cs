@@ -7,14 +7,24 @@ namespace NebulaNexus.Player
         [SerializeField] private Transform spawnPosition;
         private PlayerController playerController;
 
+        /// <summary>
+        /// Set Player controller to view
+        /// </summary>
+        /// <param name="playerController"></param>
         public void SetController(PlayerController playerController) => this.playerController = playerController;
 
+        /// <summary>
+        /// Update to get move and shoot input
+        /// </summary>
         private void Update()
         {
             MovementInput();
             ShootInput();
         }
 
+        /// <summary>
+        /// Get Move input from user
+        /// </summary>
         private void MovementInput()
         {
             if (Input.GetAxisRaw("Horizontal") > 0)
@@ -23,6 +33,9 @@ namespace NebulaNexus.Player
                 playerController.MovePlayer(Direction.LEFT);
         }
 
+        /// <summary>
+        /// Get Shoot input from user
+        /// </summary>
         private void ShootInput()
         {
             if (Input.GetMouseButton(0))
