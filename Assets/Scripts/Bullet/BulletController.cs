@@ -12,6 +12,7 @@ namespace NebulaNexus.Bullet
         {
             bulletView = Object.Instantiate(bulletPrefab);
             bulletView.SetController(this);
+            bulletView.SetupBulletView(bulletSO.bulletSprite);
             this.bulletSO = bulletSO;
         }
 

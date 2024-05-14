@@ -4,9 +4,12 @@ namespace NebulaNexus.Bullet
 {
     public class BulletView : MonoBehaviour
     {
+        [SerializeField] private SpriteRenderer bulletSR;
         private BulletController bulletController;
 
         public void SetController(BulletController bulletController) => this.bulletController = bulletController;
+
+        public void SetupBulletView(Sprite bulletSprite) => bulletSR.sprite = bulletSprite;
 
         private void Update() => bulletController?.MoveBullet();
 
