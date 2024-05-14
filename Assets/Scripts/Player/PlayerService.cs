@@ -13,5 +13,9 @@ namespace NebulaNexus.Player
             playerController = new PlayerController(playerView, playerSO);
             bulletPool = new BulletPool(bulletPrefab, bulletSO);
         }
+
+        public BulletController GetBullet() => bulletPool.GetItem();
+
+        public void ReturnBullet(BulletController returnBullet) => bulletPool.ReturnItem(returnBullet);
     }
 }
