@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using NebulaNexus.Main;
+using NebulaNexus.Bullet;
 
 namespace NebulaNexus.Player
 {
@@ -20,6 +22,12 @@ namespace NebulaNexus.Player
                 playerView.transform.Translate(-playerView.transform.right * playerSO.moveSpeed * Time.deltaTime);
             else
                 playerView.transform.Translate(playerView.transform.right * playerSO.moveSpeed * Time.deltaTime);
+        }
+
+        public void ShootBullet(Transform spawnPosition)
+        {
+            BulletController bullet = GameService.Instance.PlayerService.GetBullet();
+            bullet.ConfigureBullet(spawnPosition);
         }
     }
 }
