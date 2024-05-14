@@ -9,6 +9,8 @@ namespace NebulaNexus.Player
         private PlayerView playerView;
         private PlayerScriptableObject playerSO;
 
+        private float rateOfFire = 0f;
+
         /// <summary>
         /// Initialize Player controller object
         /// </summary>
@@ -28,19 +30,25 @@ namespace NebulaNexus.Player
         public void MovePlayer(Direction direction)
         {
             if (direction == Direction.LEFT)
-                playerView.transform.Translate(-playerView.transform.right * playerSO.moveSpeed * Time.deltaTime);
+                playerView.transform.Translate(playerSO.MoveSpeed * Time.deltaTime * -playerView.transform.right);
             else
-                playerView.transform.Translate(playerView.transform.right * playerSO.moveSpeed * Time.deltaTime);
+                playerView.transform.Translate(playerSO.MoveSpeed * Time.deltaTime * playerView.transform.right);
         }
 
         /// <summary>
-        /// Get Bullet controller and spawn
+        /// Get Bullet controller and spawn based on rate of fire
         /// </summary>
         /// <param name="spawnPosition"></param>
         public void ShootBullet(Transform spawnPosition)
         {
-            BulletController bullet = GameService.Instance.PlayerService.GetBullet();
-            bullet.ConfigureBullet(spawnPosition);
+            if (rateOfFire < playerSO.RateOfFire)
+                rateOfFire += Time.deltaTime;
+            else
+            {
+                BulletController bullet = GameService.Instance.PlayerService.GetBullet();
+                bullet.ConfigureBullet(spawnPosition);
+                rateOfFire = 0f;
+            }
         }
     }
 }
