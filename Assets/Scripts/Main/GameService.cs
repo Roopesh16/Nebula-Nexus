@@ -2,6 +2,7 @@ using UnityEngine;
 using NebulaNexus.UI;
 using NebulaNexus.Player;
 using NebulaNexus.Utilities;
+using NebulaNexus.Bullet;
 
 namespace NebulaNexus.Main
 {
@@ -13,6 +14,8 @@ namespace NebulaNexus.Main
         [Header("Player Service")]
         [SerializeField] private PlayerView playerView;
         [SerializeField] private PlayerScriptableObject playerSO;
+        [SerializeField] private BulletView bulletPrefab;
+        [SerializeField] private BulletScriptableObject bulletSO;
 
         public PlayerService PlayerService { get; private set; }
         public UIService UIService => uIService;
@@ -31,7 +34,7 @@ namespace NebulaNexus.Main
         /// </summary>
         private void CreateInstance()
         {
-            PlayerService = new PlayerService(playerView, playerSO);
+            PlayerService = new PlayerService(playerView, playerSO, bulletPrefab, bulletSO);
         }
     }
 }
