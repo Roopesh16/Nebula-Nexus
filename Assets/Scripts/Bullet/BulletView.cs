@@ -14,7 +14,11 @@ namespace NebulaNexus.Bullet
 
         public void SetupBulletView(Sprite bulletSprite) => bulletSR.sprite = bulletSprite;
 
-        public void StartTimerCoroutine() => StartCoroutine(StartTimer());
+        public void StartTimerCoroutine()
+        {
+            bulletTimer = 0f;
+            StartCoroutine(StartTimer());
+        }
 
         private IEnumerator StartTimer()
         {
