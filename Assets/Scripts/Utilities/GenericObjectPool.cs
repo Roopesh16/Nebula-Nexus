@@ -28,7 +28,7 @@ namespace NebulaNexus.Utilities
         {
             if (pooledList.Count > 0)
             {
-                PooledItem<T> pooledItem = pooledList.Find(item => !item.IsUsed && item.Item is not null);
+                PooledItem<T> pooledItem = pooledList.Find(item => !item.IsUsed);
                 if (pooledItem != null)
                 {
                     pooledItem.IsUsed = true;
