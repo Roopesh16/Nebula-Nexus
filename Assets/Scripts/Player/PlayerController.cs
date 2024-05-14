@@ -8,7 +8,6 @@ namespace NebulaNexus.Player
     {
         private PlayerView playerView;
         private PlayerScriptableObject playerSO;
-
         private float rateOfFire = 0f;
 
         /// <summary>

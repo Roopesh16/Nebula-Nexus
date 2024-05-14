@@ -8,7 +8,7 @@ namespace NebulaNexus.Player
         private PlayerController playerController;
 
         /// <summary>
-        /// Set Player controller to view
+        /// Set controller for Player view
         /// </summary>
         /// <param name="playerController"></param>
         public void SetController(PlayerController playerController) => this.playerController = playerController;
