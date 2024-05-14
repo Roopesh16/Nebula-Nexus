@@ -59,10 +59,10 @@ namespace NebulaNexus.Utilities
         /// <summary>
         /// Return the object to the list
         /// </summary>
-        /// <param name="Item">Generic Object Type</param>
-        public void ReturnItem(T Item)
+        /// <param name="item">Generic Object Type</param>
+        public void ReturnItem(T item)
         {
-            PooledItem<T> pooledItem = pooledList.Find(i => i.Item.Equals(Item));
+            PooledItem<T> pooledItem = pooledList.Find(i => i.Item.Equals(item));
             pooledItem.IsUsed = false;
         }
     }
