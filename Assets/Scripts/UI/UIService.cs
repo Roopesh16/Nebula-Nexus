@@ -10,7 +10,7 @@ namespace NebulaNexus.UI
 
         private void Update()
         {
-            bgImage.uvRect = new Rect(bgImage.uvRect.position + new Vector2(0, yScroll) * Time.deltaTime,
+            bgImage.uvRect = new Rect(bgImage.uvRect.position + (new Vector2(0, yScroll) * Time.deltaTime),
                                       bgImage.uvRect.size);
         }
     }
