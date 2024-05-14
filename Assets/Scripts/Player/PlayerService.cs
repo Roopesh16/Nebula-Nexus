@@ -1,14 +1,17 @@
+using NebulaNexus.Bullet;
+
 namespace NebulaNexus.Player
 {
     public class PlayerService
     {
-        private PlayerView playerView;
-        private PlayerScriptableObject playerSO;
         private PlayerController playerController;
+        private BulletPool bulletPool;
 
-        public PlayerService(PlayerView playerView, PlayerScriptableObject playerSO)
+        public PlayerService(PlayerView playerView, PlayerScriptableObject playerSO, BulletView bulletPrefab,
+                                                                            BulletScriptableObject bulletSO)
         {
             playerController = new PlayerController(playerView, playerSO);
+            bulletPool = new BulletPool(bulletPrefab, bulletSO);
         }
     }
 }
