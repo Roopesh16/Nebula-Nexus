@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using NebulaNexus.Main;
 using NebulaNexus.Interfaces;
 
 namespace NebulaNexus.Bullet
@@ -7,6 +8,7 @@ namespace NebulaNexus.Bullet
     {
         private BulletView bulletView;
         private BulletScriptableObject bulletSO;
+        private bool canMove = false;
 
         public BulletController(BulletView bulletPrefab, BulletScriptableObject bulletSO)
         {
@@ -21,6 +23,8 @@ namespace NebulaNexus.Bullet
             bulletView.gameObject.SetActive(true);
             bulletView.transform.localPosition = spawnPosition.position;
             bulletView.transform.localRotation = spawnPosition.rotation;
+            bulletView.StartTimerCoroutine();
+            canMove = true;
         }
 
         public void MoveBullet()
