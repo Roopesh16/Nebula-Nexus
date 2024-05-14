@@ -10,9 +10,9 @@ namespace NebulaNexus.Bullet
         private BulletScriptableObject bulletSO;
         private bool canMove = false;
 
-        public BulletController(BulletView bulletPrefab, BulletScriptableObject bulletSO)
+        public BulletController(BulletView bulletPrefab, BulletScriptableObject bulletSO, Transform parent)
         {
-            bulletView = Object.Instantiate(bulletPrefab);
+            bulletView = Object.Instantiate(bulletPrefab, parent);
             bulletView.SetController(this);
             bulletView.SetupBulletView(bulletSO.bulletSprite);
             this.bulletSO = bulletSO;
