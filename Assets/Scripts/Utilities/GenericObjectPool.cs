@@ -43,9 +43,10 @@ namespace NebulaNexus.Utilities
         /// <returns>Generic Pooled Type</returns>
         private T CreateNewItem()
         {
-            PooledItem<T> pooledItem = new PooledItem<T>();
+            PooledItem<T> pooledItem = new();
             pooledItem.Item = CreateItem();
             pooledItem.IsUsed = true;
+            pooledList.Add(pooledItem);
             return pooledItem.Item;
         }
 
