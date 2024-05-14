@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace NebulaNexus.Utilities
 {
@@ -17,7 +16,7 @@ namespace NebulaNexus.Utilities
     /// Generic Pool Class
     /// </summary>
     /// <typeparam name="T">Generic Pooled Type</typeparam>
-    public class GenericObjectPool<T> where T : class
+    public abstract class GenericObjectPool<T> where T : class
     {
         private List<PooledItem<T>> pooledList = new();
 
@@ -54,10 +53,6 @@ namespace NebulaNexus.Utilities
         /// To be overriden by child class, to create pooled item object
         /// </summary>
         /// <returns>Generic Pooled Type</returns>
-        /// <exception cref="NotImplementedException"></exception>
-        protected virtual T CreateItem()
-        {
-            throw new NotImplementedException("CreateItem() not used!");
-        }
+        protected abstract T CreateItem();
     }
 }
