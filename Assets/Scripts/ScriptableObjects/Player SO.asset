@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc9842536b18ee40b91de4175c90fa4, type: 3}
   m_Name: Player SO
   m_EditorClassIdentifier: 
+  MoveSpeed: 3
+  RateOfFire: 0.05
