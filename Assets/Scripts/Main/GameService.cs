@@ -16,6 +16,7 @@ namespace NebulaNexus.Main
         [SerializeField] private PlayerScriptableObject playerSO;
         [SerializeField] private BulletView bulletPrefab;
         [SerializeField] private BulletScriptableObject bulletSO;
+        [SerializeField] private Transform bulletParent;
 
         public PlayerService PlayerService { get; private set; }
         public UIService UIService => uIService;
@@ -34,7 +35,7 @@ namespace NebulaNexus.Main
         /// </summary>
         private void CreateInstance()
         {
-            PlayerService = new PlayerService(playerView, playerSO, bulletPrefab, bulletSO);
+            PlayerService = new PlayerService(playerView, playerSO, bulletPrefab, bulletSO, bulletParent);
         }
     }
 }

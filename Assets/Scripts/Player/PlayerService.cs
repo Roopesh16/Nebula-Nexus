@@ -1,4 +1,5 @@
 using NebulaNexus.Bullet;
+using UnityEngine;
 
 namespace NebulaNexus.Player
 {
@@ -8,10 +9,10 @@ namespace NebulaNexus.Player
         private BulletPool bulletPool;
 
         public PlayerService(PlayerView playerView, PlayerScriptableObject playerSO, BulletView bulletPrefab,
-                                                                            BulletScriptableObject bulletSO)
+                                             BulletScriptableObject bulletSO, Transform bulletParent)
         {
             playerController = new PlayerController(playerView, playerSO);
-            bulletPool = new BulletPool(bulletPrefab, bulletSO);
+            bulletPool = new BulletPool(bulletPrefab, bulletSO, bulletParent);
         }
 
         public BulletController GetBullet() => bulletPool.GetItem();
