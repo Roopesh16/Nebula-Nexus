@@ -6,7 +6,7 @@ namespace NebulaNexus.Utilities
     /// Structure to hold Item and its state
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public struct PooledItem<T> where T : class
+    public class PooledItem<T> where T : class
     {
         public T Item;
         public bool IsUsed;
