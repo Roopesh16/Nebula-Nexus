@@ -25,7 +25,8 @@ namespace NebulaNexus.Bullet
 
         public void MoveBullet()
         {
-            bulletView.transform.Translate(bulletView.transform.up * bulletSO.moveSpeed * Time.deltaTime);
+            if (canMove)
+                bulletView.transform.Translate(bulletView.transform.up * bulletSO.moveSpeed * Time.deltaTime);
         }
 
         public void OnTrigger(GameObject other)
