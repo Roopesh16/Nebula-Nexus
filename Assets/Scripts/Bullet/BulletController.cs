@@ -32,5 +32,12 @@ namespace NebulaNexus.Bullet
         {
             throw new System.NotImplementedException();
         }
+
+        public void ReturnToPool()
+        {
+            canMove = false;
+            bulletView.gameObject.SetActive(false);
+            GameService.Instance.PlayerService.ReturnBullet(this);
+        }
     }
 }
