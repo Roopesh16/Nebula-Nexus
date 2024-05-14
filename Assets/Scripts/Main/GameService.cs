@@ -7,7 +7,12 @@ namespace NebulaNexus.Main
 {
     public class GameService : GenericMonoSingleton<GameService>
     {
+        [Header("UI Service")]
         [SerializeField] private UIService uIService;
+
+        [Header("Player Service")]
+        [SerializeField] private PlayerView playerView;
+        [SerializeField] private PlayerScriptableObject playerSO;
 
         public PlayerService PlayerService { get; private set; }
         public UIService UIService => uIService;
@@ -26,7 +31,7 @@ namespace NebulaNexus.Main
         /// </summary>
         private void CreateInstance()
         {
-            PlayerService = new PlayerService();
+            PlayerService = new PlayerService(playerView, playerSO);
         }
     }
 }
