@@ -15,16 +15,17 @@ namespace NebulaNexus.Main
         [Header("Player Service")]
         [SerializeField] private PlayerView playerView;
         [SerializeField] private PlayerScriptableObject playerSO;
-        [SerializeField] private BulletView bulletPrefab;
         [SerializeField] private BulletScriptableObject bulletSO;
         [SerializeField] private Transform bulletParent;
 
         [Header("Enemy Service")]
         [SerializeField] private EnemyView enemyView;
         [SerializeField] private EnemyScriptableObject enemyScriptableObject;
-        [SerializeField] private BulletView enemyBulletPrefab;
         [SerializeField] private BulletScriptableObject enemyBulletSO;
         [SerializeField] private Transform enemyBulletParent;
+
+        [Header("Bullet Service")]
+        [SerializeField] private BulletView bulletPrefab;
 
 
         public PlayerService PlayerService { get; private set; }
@@ -46,10 +47,9 @@ namespace NebulaNexus.Main
         /// </summary>
         private void CreateInstance()
         {
-            PlayerService = new PlayerService(playerView, playerSO, bulletPrefab, bulletSO, bulletParent);
-            EnemyService = new EnemyService(enemyView, enemyScriptableObject, enemyBulletSO,
-                                            enemyBulletPrefab, enemyBulletParent);
-            BulletService = new BulletService();
+            PlayerService = new PlayerService(playerView, playerSO, bulletSO, bulletParent);
+            EnemyService = new EnemyService(enemyView, enemyScriptableObject, enemyBulletSO, enemyBulletParent);
+            BulletService = new BulletService(bulletPrefab);
         }
     }
 }
