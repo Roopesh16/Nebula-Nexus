@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324f556dd6e6ae0408787187623347ee, type: 3}
   m_Name: Enemy Bullet SO
   m_EditorClassIdentifier: 
-  moveSpeed: 6
+  moveSpeed: 5
   bulletSprite: {fileID: 21300000, guid: 34117c1e0c2d27d43973517e619028e5, type: 3}
