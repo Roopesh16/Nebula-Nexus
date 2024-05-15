@@ -1,5 +1,6 @@
 ﻿using NebulaNexus.Utilities;
 using UnityEngine;
+using System;
 
 namespace NebulaNexus.Bullet
 {
@@ -20,20 +21,25 @@ namespace NebulaNexus.Bullet
         /// <param name="bulletPrefab"></param>
         /// <param name="bulletSO"></param>
         /// <param name="parent"></param>
-        public BulletController GetBullet(BulletScriptableObject bulletSO, Transform parent)
+        public BulletController GetBullet<U>(BulletScriptableObject bulletSO, Transform parent) where U : BulletController
         {
             this.bulletSO = bulletSO;
             this.parent = parent;
-            return GetItem();
+            return GetItem<U>();
         }
 
         /// <summary>
         /// Create Bullet Controller object
         /// </summary>
         /// <returns>Bullet Controller</returns>
-        protected override BulletController CreateItem()
+        protected override BulletController CreateItem<U>() where U : class
         {
-            return new BulletController(bulletPrefab, bulletSO, parent);
+            if (typeof(U) == typeof(PlayerBullet))
+                return new PlayerBullet(bulletPrefab, bulletSO, parent);
+            else if (typeof(U) == typeof(EnemyBullet))
+                return new EnemyBullet(bulletPrefab, bulletSO, parent);
+
+            throw new NotSupportedException("Not correct sub type!");
         }
     }
 }
