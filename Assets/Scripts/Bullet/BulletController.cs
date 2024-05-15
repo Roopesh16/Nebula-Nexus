@@ -62,7 +62,7 @@ namespace NebulaNexus.Bullet
         {
             canMove = false;
             bulletView.gameObject.SetActive(false);
-            GameService.Instance.PlayerService.ReturnBullet(this);
+            GameService.Instance.BulletService.ReturnBullet(this);
         }
     }
 }
