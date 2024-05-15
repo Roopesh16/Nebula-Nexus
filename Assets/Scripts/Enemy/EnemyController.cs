@@ -25,8 +25,8 @@ namespace NebulaNexus.Enemy
                 rateOfFire += Time.deltaTime;
             else
             {
-                BulletController bullet = GameService.Instance.BulletService.GetBullet(enemyService.BulletPrefab,
-                    enemyService.BulletSO, enemyService.BulletParent);
+                BulletController bullet = GameService.Instance.BulletService.GetBullet(BulletType.ENEMY,
+                                                       enemyService.BulletSO, enemyService.BulletParent);
                 bullet.ConfigureBullet(enemyView.SpawnPosition);
                 rateOfFire = 0f;
             }

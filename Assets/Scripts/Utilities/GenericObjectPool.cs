@@ -24,28 +24,28 @@ namespace NebulaNexus.Utilities
         /// Method to get item from pooled list
         /// </summary>
         /// <returns>Generic Pooled Type</returns>
-        public T GetItem()
+        public T GetItem<U>() where U : T
         {
             if (pooledList.Count > 0)
             {
-                PooledItem<T> pooledItem = pooledList.Find(item => !item.IsUsed);
+                PooledItem<T> pooledItem = pooledList.Find(item => !item.IsUsed && item.Item is U);
                 if (pooledItem != null)
                 {
                     pooledItem.IsUsed = true;
                     return pooledItem.Item;
                 }
             }
-            return CreateNewItem();
+            return CreateNewItem<U>();
         }
 
         /// <summary>
         /// If not available, create new pooled items
         /// </summary>
         /// <returns>Generic Pooled Type</returns>
-        private T CreateNewItem()
+        private T CreateNewItem<U>() where U : T
         {
             PooledItem<T> pooledItem = new();
-            pooledItem.Item = CreateItem();
+            pooledItem.Item = CreateItem<U>();
             pooledItem.IsUsed = true;
             pooledList.Add(pooledItem);
             return pooledItem.Item;
@@ -55,7 +55,7 @@ namespace NebulaNexus.Utilities
         /// To be overriden by child class, to create pooled item object
         /// </summary>
         /// <returns>Generic Pooled Type</returns>
-        protected abstract T CreateItem();
+        protected abstract T CreateItem<U>() where U : T;
 
         /// <summary>
         /// Return the object to the list

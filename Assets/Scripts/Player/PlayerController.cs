@@ -46,8 +46,8 @@ namespace NebulaNexus.Player
                 rateOfFire += Time.deltaTime;
             else
             {
-                BulletController bullet = GameService.Instance.BulletService.GetBullet(playerService.BulletPrefab,
-                                                                playerService.BulletSO, playerService.BulletParent);
+                BulletController bullet = GameService.Instance.BulletService.GetBullet(BulletType.PLAYER,
+                                                        playerService.BulletSO, playerService.BulletParent);
                 bullet.ConfigureBullet(spawnPosition);
                 rateOfFire = 0f;
             }
