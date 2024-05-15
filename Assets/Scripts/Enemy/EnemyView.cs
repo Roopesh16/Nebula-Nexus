@@ -12,10 +12,7 @@ namespace NebulaNexus.Enemy
 
         public void SetController(EnemyController enemyController) => this.enemyController = enemyController;
 
-        private void Update()
-        {
-            enemyController.ShootBullet();
-        }
+        private void Update() => enemyController?.Update();
 
     }
 }
