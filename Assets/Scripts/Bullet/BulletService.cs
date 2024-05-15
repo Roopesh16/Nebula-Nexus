@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using UnityEngine;
 
 namespace NebulaNexus.Bullet
@@ -12,11 +12,18 @@ namespace NebulaNexus.Bullet
             bulletPool = new BulletPool(bulletPrefab);
         }
 
-        public BulletController GetBullet(BulletScriptableObject bulletSO, Transform parent)
+        public BulletController GetBullet(BulletType bulletType, BulletScriptableObject bulletSO, Transform parent)
         {
-            return bulletPool.GetBullet(bulletSO, parent);
+            switch (bulletType)
+            {
+                case BulletType.PLAYER: return bulletPool.GetBullet<PlayerBullet>(bulletSO, parent);
+
+                case BulletType.ENEMY: return bulletPool.GetBullet<EnemyBullet>(bulletSO, parent);
+            }
+
+            throw new NotSupportedException("Wrong subtype!");
         }
 
-        public void ReturnBullet(BulletController returnBullet) => bulletPool.ReturnItem(returnBullet);
+        public void ReturnBullets(BulletController returnBullet) => bulletPool.ReturnItem(returnBullet);
     }
 }
