@@ -1,5 +1,5 @@
-﻿using NebulaNexus.Enemy.StateMachine;
-using NebulaNexus.Enemy.States;
+﻿using NebulaNexus.Enemy.States;
+using NebulaNexus.Enemy.StateMachine;
 
 namespace NebulaNexus.Enemy
 {
