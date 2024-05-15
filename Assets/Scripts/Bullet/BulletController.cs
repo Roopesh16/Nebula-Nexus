@@ -6,9 +6,9 @@ namespace NebulaNexus.Bullet
 {
     public class BulletController : IBullet
     {
-        private BulletView bulletView;
-        private BulletScriptableObject bulletSO;
-        private bool canMove = false;
+        protected BulletView bulletView;
+        protected BulletScriptableObject bulletSO;
+        protected bool canMove = false;
 
         /// <summary>
         /// Create Bullet controller object
