@@ -7,14 +7,14 @@ namespace NebulaNexus.Bullet
     {
         private BulletPool bulletPool;
 
-        public BulletService()
+        public BulletService(BulletView bulletPrefab)
         {
-            bulletPool = new BulletPool();
+            bulletPool = new BulletPool(bulletPrefab);
         }
 
-        public BulletController GetBullet(BulletView bulletPrefab, BulletScriptableObject bulletSO, Transform parent)
+        public BulletController GetBullet(BulletScriptableObject bulletSO, Transform parent)
         {
-            return bulletPool.GetBullet(bulletPrefab, bulletSO, parent);
+            return bulletPool.GetBullet(bulletSO, parent);
         }
 
         public void ReturnBullet(BulletController returnBullet) => bulletPool.ReturnItem(returnBullet);
