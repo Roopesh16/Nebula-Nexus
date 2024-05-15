@@ -8,10 +8,12 @@ namespace NebulaNexus.Enemy
     {
         private EnemyView enemyView;
         private EnemyScriptableObject enemySO;
-        private float rateOfFire = 0f;
+
         private EnemyStateMachine stateMachine;
 
-        private EnemyService enemyService => GameService.Instance.EnemyService;
+        public EnemyView Enemy => enemyView;
+        public EnemyStateMachine StateMachine => stateMachine;
+        public EnemyScriptableObject Data => enemySO;
 
         public EnemyController(EnemyView enemyView, EnemyScriptableObject enemySO)
         {
