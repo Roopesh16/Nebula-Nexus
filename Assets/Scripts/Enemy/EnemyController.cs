@@ -10,6 +10,8 @@ namespace NebulaNexus.Enemy
         private EnemyScriptableObject enemySO;
         private float rateOfFire = 0f;
 
+        private EnemyService enemyService => GameService.Instance.EnemyService;
+
         public EnemyController(EnemyView enemyView, EnemyScriptableObject enemySO)
         {
             this.enemyView = enemyView;
@@ -23,7 +25,8 @@ namespace NebulaNexus.Enemy
                 rateOfFire += Time.deltaTime;
             else
             {
-                BulletController bullet = GameService.Instance.EnemyService.GetBullet();
+                BulletController bullet = GameService.Instance.BulletService.GetBullet(enemyService.BulletPrefab,
+                    enemyService.BulletSO, enemyService.BulletParent);
                 bullet.ConfigureBullet(enemyView.SpawnPosition);
                 rateOfFire = 0f;
             }
