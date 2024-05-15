@@ -402,7 +402,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377241421}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -562,7 +562,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 821540724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: -0.01, y: 0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -946,14 +946,13 @@ MonoBehaviour:
   uIService: {fileID: 1325927410}
   playerView: {fileID: 1547070337}
   playerSO: {fileID: 11400000, guid: cadd99d1dd6a54a48b9f77b4e9a3b2a6, type: 2}
-  bulletPrefab: {fileID: 7214225919482936626, guid: 95ab3581ecfdacb4b8ba26175876d360, type: 3}
   bulletSO: {fileID: 11400000, guid: f397182dcab08b54fb5a6aae75f01149, type: 2}
   bulletParent: {fileID: 710200377}
   enemyView: {fileID: 377241424}
   enemyScriptableObject: {fileID: 11400000, guid: cf8727083ba9eb7478a957b5999a78b0, type: 2}
-  enemyBulletPrefab: {fileID: 7214225919482936626, guid: 95ab3581ecfdacb4b8ba26175876d360, type: 3}
   enemyBulletSO: {fileID: 11400000, guid: 04bf20a576f343c43b77450d91b07b7e, type: 2}
   enemyBulletParent: {fileID: 115378437}
+  bulletPrefab: {fileID: 7214225919482936626, guid: 95ab3581ecfdacb4b8ba26175876d360, type: 3}
 --- !u!1 &1307996169
 GameObject:
   m_ObjectHideFlags: 0
