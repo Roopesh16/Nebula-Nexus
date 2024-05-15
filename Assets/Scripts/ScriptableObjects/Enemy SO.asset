@@ -12,5 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2c0139eb1979b48883f52d22d81449, type: 3}
   m_Name: Enemy SO
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  MoveSpeed: 1
+  DownSpeed: 2
   RateOfFire: 0.1
+  MinDistance: 0.01
+  MaxShootTime: 3
+  MoveTimeRange:
+    MinMoveTime: 3
+    MaxMoveTime: 4
+  StartPostion: {x: 0, y: 6}
+  EndPosition: {x: 0, y: 3.5}
+  LeftPosition: {x: -2, y: 3.5}
+  RightPosition: {x: 2, y: 3.5}
