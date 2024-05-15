@@ -6,7 +6,13 @@ namespace NebulaNexus.Player
     public class PlayerService
     {
         private PlayerController playerController;
-        private BulletPool bulletPool;
+        private BulletView bulletPrefab;
+        private BulletScriptableObject bulletSO;
+        private Transform bulletParent;
+
+        public BulletView BulletPrefab => bulletPrefab;
+        public BulletScriptableObject BulletSO => bulletSO;
+        public Transform BulletParent => bulletParent;
 
         /// <summary>
         /// Initialize Player Service object
@@ -19,20 +25,10 @@ namespace NebulaNexus.Player
         public PlayerService(PlayerView playerView, PlayerScriptableObject playerSO, BulletView bulletPrefab,
                                              BulletScriptableObject bulletSO, Transform bulletParent)
         {
+            this.bulletPrefab = bulletPrefab;
+            this.bulletSO = bulletSO;
+            this.bulletParent = bulletParent;
             playerController = new PlayerController(playerView, playerSO);
-            bulletPool = new BulletPool(bulletPrefab, bulletSO, bulletParent);
         }
-
-        /// <summary>
-        /// Get Bullet from bullet pool
-        /// </summary>
-        /// <returns></returns>
-        public BulletController GetBullet() => bulletPool.GetItem();
-
-        /// <summary>
-        /// Send Bullet back to Bullet pool
-        /// </summary>
-        /// <param name="returnBullet"></param>
-        public void ReturnBullet(BulletController returnBullet) => bulletPool.ReturnItem(returnBullet);
     }
 }

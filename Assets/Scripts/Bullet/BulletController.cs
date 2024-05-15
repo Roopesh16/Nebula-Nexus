@@ -32,7 +32,7 @@ namespace NebulaNexus.Bullet
         {
             bulletView.gameObject.SetActive(true);
             bulletView.transform.localPosition = spawnPosition.position;
-            bulletView.transform.localRotation = spawnPosition.rotation;
+            bulletView.transform.localRotation = spawnPosition.parent.rotation;
             bulletView.StartTimerCoroutine();
             canMove = true;
         }
@@ -62,7 +62,7 @@ namespace NebulaNexus.Bullet
         {
             canMove = false;
             bulletView.gameObject.SetActive(false);
-            GameService.Instance.PlayerService.ReturnBullet(this);
+            GameService.Instance.BulletService.ReturnBullet(this);
         }
     }
 }

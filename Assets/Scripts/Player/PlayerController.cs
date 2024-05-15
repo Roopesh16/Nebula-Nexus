@@ -10,6 +10,8 @@ namespace NebulaNexus.Player
         private PlayerScriptableObject playerSO;
         private float rateOfFire = 0f;
 
+        private PlayerService playerService => GameService.Instance.PlayerService;
+
         /// <summary>
         /// Initialize Player controller object
         /// </summary>
@@ -44,7 +46,8 @@ namespace NebulaNexus.Player
                 rateOfFire += Time.deltaTime;
             else
             {
-                BulletController bullet = GameService.Instance.PlayerService.GetBullet();
+                BulletController bullet = GameService.Instance.BulletService.GetBullet(playerService.BulletPrefab,
+                                                                playerService.BulletSO, playerService.BulletParent);
                 bullet.ConfigureBullet(spawnPosition);
                 rateOfFire = 0f;
             }
