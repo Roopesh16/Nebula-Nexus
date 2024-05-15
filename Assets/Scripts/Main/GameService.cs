@@ -29,6 +29,7 @@ namespace NebulaNexus.Main
 
         public PlayerService PlayerService { get; private set; }
         public EnemyService EnemyService { get; private set; }
+        public BulletService BulletService { get; private set; }
         public UIService UIService => uIService;
 
         /// <summary>
@@ -48,6 +49,7 @@ namespace NebulaNexus.Main
             PlayerService = new PlayerService(playerView, playerSO, bulletPrefab, bulletSO, bulletParent);
             EnemyService = new EnemyService(enemyView, enemyScriptableObject, enemyBulletSO,
                                             enemyBulletPrefab, enemyBulletParent);
+            BulletService = new BulletService();
         }
     }
 }
