@@ -6,17 +6,21 @@ namespace NebulaNexus.Enemy
     public class EnemyService
     {
         private EnemyController enemyController;
-        private BulletPool bulletPool;
+        private BulletView bulletPrefab;
+        private BulletScriptableObject bulletSO;
+        private Transform bulletParent;
+
+        public BulletView BulletPrefab => bulletPrefab;
+        public BulletScriptableObject BulletSO => bulletSO;
+        public Transform BulletParent => bulletParent;
 
         public EnemyService(EnemyView enemyView, EnemyScriptableObject enemyScriptableObject,
-                            BulletScriptableObject bulletSO, BulletView bulletPrefab, Transform parent)
+                            BulletScriptableObject bulletSO, BulletView bulletPrefab, Transform bulletParent)
         {
+            this.bulletPrefab = bulletPrefab;
+            this.bulletSO = bulletSO;
+            this.bulletParent = bulletParent;
             EnemyController enemyController = new EnemyController(enemyView, enemyScriptableObject);
-            BulletPool bulletPool = new BulletPool(bulletPrefab, bulletSO, parent);
         }
-
-        public BulletController GetBullet() => bulletPool.GetItem();
-
-        public void ReturnBullet(BulletController returnBullet) => bulletPool.ReturnItem(returnBullet);
     }
 }
