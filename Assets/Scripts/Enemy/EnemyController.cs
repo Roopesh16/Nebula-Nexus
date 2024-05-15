@@ -28,18 +28,5 @@ namespace NebulaNexus.Enemy
         {
             stateMachine?.Update();
         }
-
-        public void ShootBullet()
-        {
-            if (rateOfFire < enemySO.RateOfFire)
-                rateOfFire += Time.deltaTime;
-            else
-            {
-                BulletController bullet = GameService.Instance.BulletService.GetBullet(BulletType.ENEMY,
-                                                       enemyService.BulletSO, enemyService.BulletParent);
-                bullet.ConfigureBullet(enemyView.SpawnPosition);
-                rateOfFire = 0f;
-            }
-        }
     }
 }
