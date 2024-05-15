@@ -9,6 +9,7 @@ namespace NebulaNexus.Enemy
         private EnemyView enemyView;
         private EnemyScriptableObject enemySO;
         private float rateOfFire = 0f;
+        private EnemyStateMachine stateMachine;
 
         private EnemyService enemyService => GameService.Instance.EnemyService;
 
@@ -17,6 +18,13 @@ namespace NebulaNexus.Enemy
             this.enemyView = enemyView;
             this.enemyView.SetController(this);
             this.enemySO = enemySO;
+            stateMachine = new(this);
+            stateMachine.ChangeState(StateMachine.States.IDLE);
+        }
+
+        public void Update()
+        {
+            stateMachine?.Update();
         }
 
         public void ShootBullet()
