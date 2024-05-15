@@ -28,7 +28,7 @@ namespace NebulaNexus.Bullet
         /// Set bullet active for spawning
         /// </summary>
         /// <param name="spawnPosition"></param>
-        public void ConfigureBullet(Transform spawnPosition)
+        public virtual void ConfigureBullet(Transform spawnPosition)
         {
             bulletView.gameObject.SetActive(true);
             bulletView.transform.localPosition = spawnPosition.position;
@@ -40,7 +40,7 @@ namespace NebulaNexus.Bullet
         /// <summary>
         /// Move bullet in direction
         /// </summary>
-        public void MoveBullet()
+        public virtual void MoveBullet()
         {
             if (canMove)
                 bulletView.transform.Translate(bulletView.transform.up * bulletSO.moveSpeed * Time.deltaTime);
@@ -50,7 +50,7 @@ namespace NebulaNexus.Bullet
         /// When bullet triggers with collision
         /// </summary>
         /// <param name="other"></param>
-        public void OnTrigger(GameObject other)
+        public virtual void OnTrigger(GameObject other)
         {
             throw new System.NotImplementedException();
         }
