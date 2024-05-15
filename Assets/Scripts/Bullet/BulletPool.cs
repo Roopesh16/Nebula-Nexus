@@ -9,15 +9,19 @@ namespace NebulaNexus.Bullet
         private BulletScriptableObject bulletSO;
         private Transform parent;
 
+        public BulletPool(BulletView bulletPrefab)
+        {
+            this.bulletPrefab = bulletPrefab;
+        }
+
         /// <summary>
         /// Create Bullet Pool 
         /// </summary>
         /// <param name="bulletPrefab"></param>
         /// <param name="bulletSO"></param>
         /// <param name="parent"></param>
-        public BulletController GetBullet(BulletView bulletPrefab, BulletScriptableObject bulletSO, Transform parent)
+        public BulletController GetBullet(BulletScriptableObject bulletSO, Transform parent)
         {
-            this.bulletPrefab = bulletPrefab;
             this.bulletSO = bulletSO;
             this.parent = parent;
             return GetItem();
