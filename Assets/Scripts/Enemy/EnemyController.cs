@@ -21,7 +21,7 @@ namespace NebulaNexus.Enemy
             this.enemyView.SetController(this);
             this.enemySO = enemySO;
             stateMachine = new(this);
-            stateMachine.ChangeState(StateMachine.States.IDLE);
+            stateMachine.ChangeState(NebulaNexus.Enemy.StateMachine.States.IDLE);
         }
 
         public void Update()
