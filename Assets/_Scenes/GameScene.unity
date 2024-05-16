@@ -1433,6 +1433,7 @@ MonoBehaviour:
   enemyBulletParent: {fileID: 115378437}
   bulletPrefab: {fileID: 7214225919482936626, guid: 95ab3581ecfdacb4b8ba26175876d360, type: 3}
   powerupPrefab: {fileID: 4428590927786245176, guid: 23dfea278a0f4494f9b79c657c98310a, type: 3}
+  delayTime: 10
   powerupScriptableObjects:
     DoubleSO: {fileID: 11400000, guid: 65676a37d15281949b3c9031e48b0848, type: 2}
     MultipleSO: {fileID: 11400000, guid: 010c7f3ac25691d46a66331c300a8eba, type: 2}
