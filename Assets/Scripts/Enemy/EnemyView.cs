@@ -1,15 +1,15 @@
-﻿using NebulaNexus.Interfaces;
-using System.Collections;
+﻿using System.Collections.Generic;
+using NebulaNexus.Interfaces;
 using UnityEngine;
 
 namespace NebulaNexus.Enemy
 {
     public class EnemyView : MonoBehaviour, IDamage
     {
-        [SerializeField] private Transform spawnPosition;
+        [SerializeField] private List<Transform> spawnPositions = new();
         private EnemyController enemyController;
 
-        public Transform SpawnPosition => spawnPosition;
+        public List<Transform> SpawnPositions => spawnPositions;
 
         public void SetController(EnemyController enemyController) => this.enemyController = enemyController;
 
