@@ -2,6 +2,7 @@
 using NebulaNexus.Main;
 using NebulaNexus.Bullet;
 using NebulaNexus.Interfaces;
+using NebulaNexus.Powerup;
 
 namespace NebulaNexus.Player
 {
@@ -12,6 +13,7 @@ namespace NebulaNexus.Player
         private float rateOfFire = 0f;
         private bool canMoveFire = false;
         private int currentHealth;
+        private PowerupType currentPowerup = PowerupType.NULL;
 
         private PlayerService playerService => GameService.Instance.PlayerService;
 
@@ -63,9 +65,15 @@ namespace NebulaNexus.Player
                     rateOfFire += Time.deltaTime;
                 else
                 {
-                    BulletController bullet = GameService.Instance.BulletService.GetBullet(BulletType.PLAYER,
+                    switch (currentPowerup)
+                    {
+                        case PowerupType.NULL:
+                            BulletController bullet = GameService.Instance.BulletService.GetBullet(BulletType.PLAYER,
                                                             playerService.BulletSO, playerService.BulletParent);
-                    bullet.ConfigureBullet(spawnPosition);
+                            bullet.ConfigureBullet(spawnPosition);
+                            break;
+                    }
+
                     rateOfFire = 0f;
                 }
             }
