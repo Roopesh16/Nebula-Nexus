@@ -57,7 +57,7 @@ namespace NebulaNexus.Player
         /// Get Bullet controller and spawn based on rate of fire
         /// </summary>
         /// <param name="spawnPosition"></param>
-        public void ShootBullet(Transform spawnPosition)
+        public void ShootBullet()
         {
             if (GameService.Instance.GameManager.GetGameState() == GameStates.PLAY && canMoveFire)
             {
@@ -70,7 +70,25 @@ namespace NebulaNexus.Player
                         case PowerupType.NULL:
                             BulletController bullet = GameService.Instance.BulletService.GetBullet(BulletType.PLAYER,
                                                             playerService.BulletSO, playerService.BulletParent);
-                            bullet.ConfigureBullet(spawnPosition);
+                            bullet.ConfigureBullet(playerView.DefaultSpawn);
+                            break;
+
+                        case PowerupType.DOUBLE:
+                            for (int i = 0; i < playerView.DoubleSpawns.Count; i++)
+                            {
+                                BulletController dBullet = GameService.Instance.BulletService.GetBullet(BulletType.PLAYER,
+                                                            playerService.BulletSO, playerService.BulletParent);
+                                dBullet.ConfigureBullet(playerView.DoubleSpawns[i]);
+                            }
+                            break;
+
+                        case PowerupType.MULTIPLE:
+                            for (int i = 0; i < playerView.MultipleSpawns.Count; i++)
+                            {
+                                BulletController mBullet = GameService.Instance.BulletService.GetBullet(BulletType.PLAYER,
+                                                            playerService.BulletSO, playerService.BulletParent);
+                                mBullet.ConfigureBullet(playerView.MultipleSpawns[i]);
+                            }
                             break;
                     }
 
@@ -89,6 +107,19 @@ namespace NebulaNexus.Player
             currentHealth -= damage;
         }
 
+        public void OnTrigger(GameObject other)
+        {
+            if (other.CompareTag("Powerup"))
+            {
+                PowerupType powerupType = other.GetComponent<PowerupView>().GetPowerupType();
+
+                if (powerupType == PowerupType.DOUBLE)
+                    currentPowerup = PowerupType.DOUBLE;
+                else
+                    currentPowerup = PowerupType.MULTIPLE;
+            }
+        }
+
         private void ActivatePlayer() => playerView.gameObject.SetActive(true);
         private void EnableMoveFire() => canMoveFire = true;
 
@@ -97,7 +128,5 @@ namespace NebulaNexus.Player
             playerView.gameObject.SetActive(false);
             currentHealth = playerSO.MaxHealth;
         }
-
-
     }
 }
