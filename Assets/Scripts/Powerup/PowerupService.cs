@@ -6,7 +6,6 @@ namespace NebulaNexus.Powerup
 {
     public class PowerupService
     {
-        private PowerupView powerupPrefab;
         private PowerupSOs powerupSOs;
         private float delayTime;
         private List<Transform> spawnPositions = new();
@@ -17,11 +16,10 @@ namespace NebulaNexus.Powerup
 
         public PowerupService(PowerupView powerupPrefab, float delayTime, PowerupSOs powerupSOs, List<Transform> spawnPositions)
         {
-            this.powerupPrefab = powerupPrefab;
             this.delayTime = delayTime;
             this.spawnPositions = spawnPositions;
             this.powerupSOs = powerupSOs;
-            powerupPool = new(this.powerupPrefab);
+            powerupPool = new(powerupPrefab);
         }
 
         public void Update()
