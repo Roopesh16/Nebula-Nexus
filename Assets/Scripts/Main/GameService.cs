@@ -4,6 +4,7 @@ using NebulaNexus.Player;
 using NebulaNexus.Utilities;
 using NebulaNexus.Bullet;
 using NebulaNexus.Enemy;
+using NebulaNexus.Events;
 
 namespace NebulaNexus.Main
 {
@@ -28,6 +29,8 @@ namespace NebulaNexus.Main
         [SerializeField] private BulletView bulletPrefab;
 
 
+        public EventService EventService { get; private set; }
+        public GameManager GameManager { get; private set; }
         public PlayerService PlayerService { get; private set; }
         public EnemyService EnemyService { get; private set; }
         public BulletService BulletService { get; private set; }
@@ -47,6 +50,8 @@ namespace NebulaNexus.Main
         /// </summary>
         private void CreateInstance()
         {
+            EventService = new EventService();
+            GameManager = new GameManager();
             PlayerService = new PlayerService(playerView, playerSO, bulletSO, bulletParent);
             EnemyService = new EnemyService(enemyView, enemyScriptableObject, enemyBulletSO, enemyBulletParent);
             BulletService = new BulletService(bulletPrefab);
