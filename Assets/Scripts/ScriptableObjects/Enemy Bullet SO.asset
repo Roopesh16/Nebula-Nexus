@@ -17,5 +17,6 @@ MonoBehaviour:
   BulletLayer:
     serializedVersion: 2
     m_Bits: 512
-  Tag: Enemy
+  BulletTag: Enemy
+  MaxHealth: 100
   Damage: 10
