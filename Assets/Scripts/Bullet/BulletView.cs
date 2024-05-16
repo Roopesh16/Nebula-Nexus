@@ -57,6 +57,6 @@ namespace NebulaNexus.Bullet
         /// Call on collision with other object
         /// </summary>
         /// <param name="other"></param>
-        private void OnTriggerEnter2D(Collider2D other) => bulletController.OnTrigger(other.gameObject);
+        private void OnTriggerEnter2D(Collider2D other) => bulletController?.OnTrigger(other.gameObject);
     }
 }
