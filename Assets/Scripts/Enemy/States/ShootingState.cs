@@ -46,8 +46,8 @@ namespace NebulaNexus.Enemy.States
                     BulletController bullet = GameService.Instance.BulletService.GetBullet(BulletType.ENEMY,
                                                            enemyService.BulletSO, enemyService.BulletParent);
                     bullet.ConfigureBullet(Owner.Enemy.SpawnPositions[i]);
-                    rateOfFire = 0f;
                 }
+                rateOfFire = 0f;
             }
         }
 
