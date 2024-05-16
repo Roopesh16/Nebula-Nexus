@@ -40,9 +40,16 @@ namespace NebulaNexus.Powerup
 
         private void SpawnRandomPowerup()
         {
-            PowerupController powerupController;
             int posRand = Random.Range(0, spawnPositions.Count);
-            PowerupType typeRand = (PowerupType)Random.Range(0, 2);
+            int randVal = Random.Range(MIN_VAL, MAX_VAL);
+            PowerupType typeRand;
+
+            if (randVal < ((MIN_VAL + MAX_VAL) / 2))
+            {
+                typeRand = PowerupType.DOUBLE;
+            }
+            else
+                typeRand = PowerupType.MULTIPLE;
 
             switch (typeRand)
             {
