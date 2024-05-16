@@ -5,8 +5,8 @@ namespace NebulaNexus.Powerup
 {
     public class DoublePowerup : PowerupController
     {
-        public DoublePowerup(PowerupView powerupView, Transform parent, PowerupType powerupType, Sprite powerupSprite) :
-            base(powerupView, parent, powerupType, powerupSprite)
+        public DoublePowerup(PowerupView powerupView, Transform parent, PowerupScriptableObject powerupSO) :
+            base(powerupView, parent, powerupSO)
         { }
 
         public override void OnTrigger(GameObject other)
