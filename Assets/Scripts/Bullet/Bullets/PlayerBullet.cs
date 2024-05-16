@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NebulaNexus.Enemy;
+using System.Collections;
 using UnityEngine;
 
 namespace NebulaNexus.Bullet
@@ -9,6 +10,14 @@ namespace NebulaNexus.Bullet
             base(bulletPrefab, bulletSO, parent)
         { }
 
+        public override void ConfigureBullet(Transform spawnPosition)
+        {
+            bulletView.transform.localRotation = spawnPosition.rotation;
+            bulletView.gameObject.layer = 1 << bulletSO.BulletLayer;
+            bulletView.gameObject.tag = bulletSO.BulletTag;
+            base.ConfigureBullet(spawnPosition);
+        }
+
         public override void MoveBullet()
         {
             base.MoveBullet();
@@ -16,7 +25,10 @@ namespace NebulaNexus.Bullet
 
         public override void OnTrigger(GameObject other)
         {
-            base.OnTrigger(other);
+            if (other.CompareTag("Enemy"))
+            {
+                other.GetComponent<EnemyView>().DecreaseHealth(bulletSO.Damage);
+            }
         }
     }
 }

@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using NebulaNexus.Interfaces;
+using System.Collections;
 using UnityEngine;
 
 namespace NebulaNexus.Enemy
 {
-    public class EnemyView : MonoBehaviour
+    public class EnemyView : MonoBehaviour, IDamage
     {
         [SerializeField] private Transform spawnPosition;
         private EnemyController enemyController;
@@ -13,6 +14,8 @@ namespace NebulaNexus.Enemy
         public void SetController(EnemyController enemyController) => this.enemyController = enemyController;
 
         private void Update() => enemyController?.Update();
+
+        public void DecreaseHealth(int damage) => enemyController.DecreaseHealth(damage);
 
     }
 }

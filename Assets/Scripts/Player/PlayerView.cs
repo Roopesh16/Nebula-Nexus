@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using NebulaNexus.Enemy;
+using NebulaNexus.Interfaces;
+using UnityEngine;
 
 namespace NebulaNexus.Player
 {
-    public class PlayerView : MonoBehaviour
+    public class PlayerView : MonoBehaviour, IDamage
     {
         [SerializeField] private Transform spawnPosition;
         private PlayerController playerController;
@@ -40,7 +42,8 @@ namespace NebulaNexus.Player
         {
             if (Input.GetMouseButton(0))
                 playerController.ShootBullet(spawnPosition);
-
         }
+
+        public void DecreaseHealth(int damage) => playerController.DecreaseHealth(damage);
     }
 }

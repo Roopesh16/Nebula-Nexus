@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 324f556dd6e6ae0408787187623347ee, type: 3}
   m_Name: Player Bullet SO
   m_EditorClassIdentifier: 
-  moveSpeed: 6
-  bulletSprite: {fileID: 21300002, guid: 63497777be1c2a3468333a9fd29c6036, type: 3}
+  MoveSpeed: 6
+  BulletSprite: {fileID: 21300002, guid: 63497777be1c2a3468333a9fd29c6036, type: 3}
+  BulletLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  BulletTag: Player
+  MaxHealth: 100
+  Damage: 10

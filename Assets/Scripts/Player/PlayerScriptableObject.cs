@@ -7,5 +7,6 @@ namespace NebulaNexus.Player
     {
         public float MoveSpeed = 3f;
         public float RateOfFire = 0.2f;
+        public int MaxHealth = 100;
     }
 }

@@ -1,15 +1,16 @@
 ﻿using NebulaNexus.Bullet;
+using NebulaNexus.Interfaces;
 using NebulaNexus.Main;
 using UnityEngine;
 
 namespace NebulaNexus.Enemy
 {
-    public class EnemyController
+    public class EnemyController : IDamage
     {
         private EnemyView enemyView;
         private EnemyScriptableObject enemySO;
-
         private EnemyStateMachine stateMachine;
+        private int currentHealth;
 
         public EnemyView Enemy => enemyView;
         public EnemyStateMachine StateMachine => stateMachine;
@@ -20,12 +21,16 @@ namespace NebulaNexus.Enemy
             this.enemyView = enemyView;
             this.enemyView.SetController(this);
             this.enemySO = enemySO;
+            currentHealth = enemySO.MaxHealth;
             stateMachine = new(this);
             SubscribeEvents();
         }
 
-        private void SubscribeEvents() => GameService.Instance.EventService.OnPlayClick.AddListener(SetToIdle);
-
+        private void SubscribeEvents()
+        {
+            GameService.Instance.EventService.OnPlayClick.AddListener(SetToIdle);
+            GameService.Instance.EventService.OnGameOver.AddListener(ResetEnemy);
+        }
         public void Update()
         {
             if (GameService.Instance.GameManager.GetGameState() == GameStates.PLAY)
@@ -33,5 +38,23 @@ namespace NebulaNexus.Enemy
         }
 
         private void SetToIdle() => stateMachine.ChangeState(NebulaNexus.Enemy.StateMachine.States.IDLE);
+
+        public void DecreaseHealth(int damage)
+        {
+            if (currentHealth <= 0)
+            {
+                GameService.Instance.GameManager.OnGameOver();
+                return;
+            }
+            currentHealth -= damage;
+        }
+
+        private void ResetEnemy()
+        {
+            enemyView.gameObject.SetActive(false);
+            enemyView.transform.position = enemySO.StartPostion;
+            enemyView.gameObject.SetActive(true);
+            currentHealth = enemySO.MaxHealth;
+        }
     }
 }
