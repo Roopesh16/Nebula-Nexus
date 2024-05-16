@@ -8,16 +8,22 @@ namespace NebulaNexus.Powerup
     public class PowerupController : IPowerup
     {
         protected PowerupView powerupView;
-        protected PowerupType powerupType;
+        protected PowerupScriptableObject powerupSO;
 
-        public PowerupType PowerupType => powerupType;
+        public PowerupScriptableObject PowerupSO => powerupSO;
 
-        public PowerupController(PowerupView powerupView, Transform parent, PowerupType powerupType, Sprite powerupSprite)
+        public PowerupController(PowerupView powerupView, Transform parent, PowerupScriptableObject powerupSO)
         {
             this.powerupView = Object.Instantiate(powerupView, parent);
             this.powerupView.SetController(this);
-            this.powerupType = powerupType;
-            this.powerupView.SetPowerupSprite(powerupSprite);
+            this.powerupSO = powerupSO;
+            this.powerupView.SetPowerupSprite(powerupSO.PowerupSprite);
+        }
+
+        public void MovePowerup()
+        {
+            if (GameService.Instance.GameManager.GetGameState() == GameStates.PLAY)
+                powerupView.transform.Translate(powerupSO.MoveSpeed * Time.deltaTime * -powerupView.transform.up);
         }
 
         public virtual void OnTrigger(GameObject other)
