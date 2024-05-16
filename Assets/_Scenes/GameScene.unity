@@ -335,9 +335,9 @@ GameObject:
   - component: {fileID: 377241423}
   - component: {fileID: 377241422}
   - component: {fileID: 377241424}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547,7 +547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 821540725}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
@@ -1152,9 +1152,9 @@ GameObject:
   - component: {fileID: 1547070336}
   - component: {fileID: 1547070335}
   - component: {fileID: 1547070337}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1249,7 +1249,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2083670861}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
