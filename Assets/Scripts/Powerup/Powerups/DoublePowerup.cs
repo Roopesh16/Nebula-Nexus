@@ -11,6 +11,12 @@ namespace NebulaNexus.Powerup
             this.powerupSO = powerupSO;
         }
 
+        public override void ConfigurePowerup(Transform parent)
+        {
+            base.ConfigurePowerup(parent);
+            powerupView.SetPowerupSprite(powerupSO.PowerupSprite);
+        }
+
         public override void OnTrigger(GameObject other)
         {
             Debug.Log("Double");
