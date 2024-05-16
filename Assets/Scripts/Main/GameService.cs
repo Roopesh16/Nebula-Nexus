@@ -33,6 +33,7 @@ namespace NebulaNexus.Main
 
         [Header("Powerup Service")]
         [SerializeField] private PowerupView powerupPrefab;
+        [SerializeField] private float delayTime = 4f;
         [SerializeField] private PowerupSOs powerupScriptableObjects;
         [SerializeField] private List<Transform> spawnPostions = new();
 
@@ -54,6 +55,8 @@ namespace NebulaNexus.Main
             CreateInstance();
         }
 
+        private void Update() => PowerupService?.Update();
+
         /// <summary>
         /// Method to create all services
         /// </summary>
@@ -64,7 +67,7 @@ namespace NebulaNexus.Main
             PlayerService = new PlayerService(playerView, playerSO, bulletSO, bulletParent);
             EnemyService = new EnemyService(enemyView, enemyScriptableObject, enemyBulletSO, enemyBulletParent);
             BulletService = new BulletService(bulletPrefab);
-            PowerupService = new PowerupService(powerupPrefab, powerupScriptableObjects, spawnPostions);
+            PowerupService = new PowerupService(powerupPrefab,delayTime ,powerupScriptableObjects, spawnPostions);
         }
     }
 
