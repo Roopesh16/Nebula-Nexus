@@ -12,17 +12,18 @@ namespace NebulaNexus.Powerup
         private float timer = 0f;
         public PowerupScriptableObject PowerupSO => powerupSO;
 
-        public PowerupController(PowerupView powerupView, Transform parent, PowerupScriptableObject powerupSO)
+        public PowerupController(PowerupView powerupPrefab, Transform parent, PowerupScriptableObject powerupSO)
         {
-            this.powerupView = Object.Instantiate(powerupView, parent);
-            this.powerupView.SetController(this);
-            powerupView.SetPowerupSprite(powerupSO.PowerupSprite);
+            powerupView = Object.Instantiate(powerupPrefab, parent);
+            powerupView.SetController(this);
+            powerupPrefab.SetPowerupSprite(powerupSO.PowerupSprite);
             this.powerupSO = powerupSO;
         }
 
-        public void ConfigurePowerup()
+        public void ConfigurePowerup(Transform parent)
         {
             powerupView.gameObject.SetActive(true);
+            powerupView.transform.position = parent.position;
         }
 
         public void StartTimer()
@@ -42,10 +43,7 @@ namespace NebulaNexus.Powerup
                 powerupView.transform.Translate(powerupSO.MoveSpeed * Time.deltaTime * -powerupView.transform.up);
         }
 
-        public virtual void OnTrigger(GameObject other)
-        {
-            ReturnToPool();
-        }
+        public virtual void OnTrigger(GameObject other) => ReturnToPool();
 
         private void ReturnToPool()
         {
