@@ -52,7 +52,8 @@ namespace NebulaNexus.Bullet
         /// <param name="other"></param>
         public virtual void OnTrigger(GameObject other)
         {
-            throw new System.NotImplementedException();
+            GameService.Instance.GameManager.SetGameState(GameStates.OVER);
+            GameService.Instance.EventService.OnGameOver.Invoke();
         }
 
         /// <summary>
