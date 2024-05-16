@@ -3,6 +3,7 @@
     public enum PowerupType
     {
         DOUBLE,
-        MULTIPLE
+        MULTIPLE,
+        NULL
     }
 }
