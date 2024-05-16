@@ -7,8 +7,7 @@ namespace NebulaNexus.Powerup
     public class PowerupPool : GenericObjectPool<PowerupController>
     {
         private PowerupView powerupPrefab;
-        private PowerupType powerupType;
-        private Sprite powerupSprite;
+        private PowerupScriptableObject powerupSO;
         private Transform parent;
 
         public PowerupPool(PowerupView powerupPrefab)
@@ -16,10 +15,9 @@ namespace NebulaNexus.Powerup
             this.powerupPrefab = powerupPrefab;
         }
 
-        public PowerupController GetPowerup<U>(PowerupType powerupType, Transform parent, Sprite powerupSprite) where U : PowerupController
+        public PowerupController GetPowerup<U>(PowerupType powerupType, Transform parent, PowerupScriptableObject powerupSO) where U : PowerupController
         {
-            this.powerupType = powerupType;
-            this.powerupSprite = powerupSprite;
+            this.powerupSO = powerupSO;
             this.parent = parent;
             return GetItem<U>();
         }
@@ -27,9 +25,9 @@ namespace NebulaNexus.Powerup
         protected override PowerupController CreateItem<U>() where U : class
         {
             if (typeof(U) == typeof(DoublePowerup))
-                return new DoublePowerup(powerupPrefab, parent, powerupType, powerupSprite);
-            else if (typeof(U) == typeof(DoublePowerup))
-                return new MultiplePowerup(powerupPrefab, parent, powerupType, powerupSprite);
+                return new DoublePowerup(powerupPrefab, parent, powerupSO);
+            else if (typeof(U) == typeof(MultiplePowerup))
+                return new MultiplePowerup(powerupPrefab, parent, powerupSO);
 
             throw new NotSupportedException("Invalid Powerup type!");
         }
