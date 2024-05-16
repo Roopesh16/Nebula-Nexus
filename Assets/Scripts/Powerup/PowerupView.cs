@@ -15,7 +15,11 @@ namespace NebulaNexus.Powerup
 
         public PowerupType GetPowerupType() => powerupController.PowerupSO.PowerupType;
 
-        private void Update() => powerupController?.MovePowerup();
+        private void Update()
+        {
+            powerupController?.StartTimer();
+            powerupController?.MovePowerup();
+        }
 
         private void OnTriggerEnter2D(Collider2D other) => powerupController?.OnTrigger(other.gameObject);
     }
