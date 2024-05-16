@@ -9,6 +9,7 @@ namespace NebulaNexus.Player
         private PlayerView playerView;
         private PlayerScriptableObject playerSO;
         private float rateOfFire = 0f;
+        private bool canMoveFire = false;
 
         private PlayerService playerService => GameService.Instance.PlayerService;
 
@@ -20,8 +21,16 @@ namespace NebulaNexus.Player
         public PlayerController(PlayerView playerView, PlayerScriptableObject playerSO)
         {
             this.playerView = playerView;
-            this.playerSO = playerSO;
+            this.playerView.gameObject.SetActive(false);
             playerView.SetController(this);
+            this.playerSO = playerSO;
+            SubscribeEvents();
+        }
+
+        private void SubscribeEvents()
+        {
+            GameService.Instance.EventService.OnPlayClick.AddListener(ActivatePlayer);
+            GameService.Instance.EventService.OnEnemyActive.AddListener(EnableMoveFire);
         }
 
         /// <summary>
@@ -30,10 +39,13 @@ namespace NebulaNexus.Player
         /// <param name="direction"></param>
         public void MovePlayer(Direction direction)
         {
-            if (direction == Direction.LEFT)
-                playerView.transform.Translate(playerSO.MoveSpeed * Time.deltaTime * -playerView.transform.right);
-            else
-                playerView.transform.Translate(playerSO.MoveSpeed * Time.deltaTime * playerView.transform.right);
+            if (GameService.Instance.GameManager.GetGameState() == GameStates.PLAY && canMoveFire)
+            {
+                if (direction == Direction.LEFT)
+                    playerView.transform.Translate(playerSO.MoveSpeed * Time.deltaTime * -playerView.transform.right);
+                else
+                    playerView.transform.Translate(playerSO.MoveSpeed * Time.deltaTime * playerView.transform.right);
+            }
         }
 
         /// <summary>
@@ -42,15 +54,23 @@ namespace NebulaNexus.Player
         /// <param name="spawnPosition"></param>
         public void ShootBullet(Transform spawnPosition)
         {
-            if (rateOfFire < playerSO.RateOfFire)
-                rateOfFire += Time.deltaTime;
-            else
+            if (GameService.Instance.GameManager.GetGameState() == GameStates.PLAY && canMoveFire)
             {
-                BulletController bullet = GameService.Instance.BulletService.GetBullet(BulletType.PLAYER,
-                                                        playerService.BulletSO, playerService.BulletParent);
-                bullet.ConfigureBullet(spawnPosition);
-                rateOfFire = 0f;
+                if (rateOfFire < playerSO.RateOfFire)
+                    rateOfFire += Time.deltaTime;
+                else
+                {
+                    BulletController bullet = GameService.Instance.BulletService.GetBullet(BulletType.PLAYER,
+                                                            playerService.BulletSO, playerService.BulletParent);
+                    bullet.ConfigureBullet(spawnPosition);
+                    rateOfFire = 0f;
+                }
             }
         }
+
+        private void ActivatePlayer() => playerView.gameObject.SetActive(true);
+
+        private void EnableMoveFire() => canMoveFire = true;
+
     }
 }
