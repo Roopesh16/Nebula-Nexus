@@ -9,6 +9,7 @@ namespace NebulaNexus.UI
         [Header("BG Scroll")]
         [SerializeField] private RawImage bgImage;
         [SerializeField] private float yScroll;
+
         [Header("Home Screen")]
         [SerializeField] private GameObject homeScreen;
         [SerializeField] private Button playButton;
