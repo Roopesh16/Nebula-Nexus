@@ -18,6 +18,7 @@ namespace NebulaNexus.Enemy
         public float RateOfFire = 0.1f;
         public float MinDistance = 0.1f;
         public float MaxShootTime = 3f;
+        public int MaxHealth = 100;
         public MoveTimeRange MoveTimeRange;
         public Vector2 StartPostion;
         public Vector2 EndPosition;

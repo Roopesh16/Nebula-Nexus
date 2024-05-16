@@ -8,8 +8,7 @@ namespace NebulaNexus.Bullet
         public float MoveSpeed = 6f;
         public Sprite BulletSprite;
         public LayerMask BulletLayer;
-        public string Tag;
-        public int MaxHealth = 100;
+        public string BulletTag;
         public int Damage;
 
     }
