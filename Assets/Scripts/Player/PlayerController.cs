@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using NebulaNexus.Main;
 using NebulaNexus.Bullet;
+using NebulaNexus.Interfaces;
 
 namespace NebulaNexus.Player
 {
-    public class PlayerController
+    public class PlayerController : IDamage
     {
         private PlayerView playerView;
         private PlayerScriptableObject playerSO;
         private float rateOfFire = 0f;
         private bool canMoveFire = false;
+        private int currentHealth;
 
         private PlayerService playerService => GameService.Instance.PlayerService;
 
@@ -24,6 +26,7 @@ namespace NebulaNexus.Player
             this.playerView.gameObject.SetActive(false);
             playerView.SetController(this);
             this.playerSO = playerSO;
+            currentHealth = playerSO.MaxHealth;
             SubscribeEvents();
         }
 
@@ -66,6 +69,16 @@ namespace NebulaNexus.Player
                     rateOfFire = 0f;
                 }
             }
+        }
+
+        public void DecreaseHealth(int damage)
+        {
+            if (currentHealth <= 0)
+            {
+                GameService.Instance.GameManager.OnGameOver();
+                return;
+            }
+            currentHealth -= damage;
         }
 
         private void ActivatePlayer() => playerView.gameObject.SetActive(true);
