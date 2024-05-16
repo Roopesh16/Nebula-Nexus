@@ -15,7 +15,7 @@ namespace NebulaNexus.Powerup
             this.powerupPrefab = powerupPrefab;
         }
 
-        public PowerupController GetPowerup<U>(PowerupType powerupType, Transform parent, PowerupScriptableObject powerupSO) where U : PowerupController
+        public PowerupController GetPowerup<U>(Transform parent, PowerupScriptableObject powerupSO) where U : PowerupController
         {
             this.powerupSO = powerupSO;
             this.parent = parent;
