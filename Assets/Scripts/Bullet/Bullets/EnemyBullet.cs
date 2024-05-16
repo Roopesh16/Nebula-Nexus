@@ -13,8 +13,8 @@ namespace NebulaNexus.Bullet
 
         public override void ConfigureBullet(Transform spawnPosition)
         {
-            bulletView.transform.localRotation = spawnPosition.parent.rotation;
-            bulletView.gameObject.layer = 1 << bulletSO.BulletLayer;
+            bulletView.transform.localRotation = spawnPosition.rotation;
+            bulletView.gameObject.layer = 9 << bulletSO.BulletLayer;
             bulletView.gameObject.tag = bulletSO.BulletTag;
             base.ConfigureBullet(spawnPosition);
 
@@ -30,6 +30,7 @@ namespace NebulaNexus.Bullet
             if (other.CompareTag("Player"))
             {
                 other.GetComponent<PlayerView>().DecreaseHealth(bulletSO.Damage);
+                base.OnTrigger(other);
             }
         }
     }
