@@ -23,10 +23,9 @@ namespace NebulaNexus.Player
         public PlayerController(PlayerView playerView, PlayerScriptableObject playerSO)
         {
             this.playerView = playerView;
-            this.playerView.gameObject.SetActive(false);
             playerView.SetController(this);
             this.playerSO = playerSO;
-            currentHealth = playerSO.MaxHealth;
+            ResetPlayer();
             SubscribeEvents();
         }
 
@@ -34,6 +33,7 @@ namespace NebulaNexus.Player
         {
             GameService.Instance.EventService.OnPlayClick.AddListener(ActivatePlayer);
             GameService.Instance.EventService.OnEnemyActive.AddListener(EnableMoveFire);
+            GameService.Instance.EventService.OnGameOver.AddListener(ResetPlayer);
         }
 
         /// <summary>
@@ -82,8 +82,14 @@ namespace NebulaNexus.Player
         }
 
         private void ActivatePlayer() => playerView.gameObject.SetActive(true);
-
         private void EnableMoveFire() => canMoveFire = true;
+
+        private void ResetPlayer()
+        {
+            playerView.gameObject.SetActive(false);
+            currentHealth = playerSO.MaxHealth;
+        }
+
 
     }
 }
