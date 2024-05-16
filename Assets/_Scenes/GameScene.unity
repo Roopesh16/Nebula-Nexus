@@ -306,7 +306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &272688409
 Transform:
   m_ObjectHideFlags: 0
@@ -1139,6 +1139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgImage: {fileID: 969886207}
   yScroll: 0.02
+  homeScreen: {fileID: 272688408}
+  playButton: {fileID: 1079905427}
 --- !u!1 &1547070334
 GameObject:
   m_ObjectHideFlags: 0
