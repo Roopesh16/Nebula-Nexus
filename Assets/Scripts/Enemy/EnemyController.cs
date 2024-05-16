@@ -26,8 +26,11 @@ namespace NebulaNexus.Enemy
             SubscribeEvents();
         }
 
-        private void SubscribeEvents() => GameService.Instance.EventService.OnPlayClick.AddListener(SetToIdle);
-
+        private void SubscribeEvents()
+        {
+            GameService.Instance.EventService.OnPlayClick.AddListener(SetToIdle);
+            GameService.Instance.EventService.OnGameOver.AddListener(ResetEnemy);
+        }
         public void Update()
         {
             if (GameService.Instance.GameManager.GetGameState() == GameStates.PLAY)
@@ -44,8 +47,14 @@ namespace NebulaNexus.Enemy
                 return;
             }
             currentHealth -= damage;
-            Debug.Log("Enemy : " + currentHealth);
+        }
 
+        private void ResetEnemy()
+        {
+            enemyView.gameObject.SetActive(false);
+            enemyView.transform.position = enemySO.StartPostion;
+            enemyView.gameObject.SetActive(true);
+            currentHealth = enemySO.MaxHealth;
         }
     }
 }
