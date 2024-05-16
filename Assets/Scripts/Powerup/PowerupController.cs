@@ -9,15 +9,31 @@ namespace NebulaNexus.Powerup
     {
         protected PowerupView powerupView;
         protected PowerupScriptableObject powerupSO;
-
+        private float timer = 0f;
         public PowerupScriptableObject PowerupSO => powerupSO;
 
         public PowerupController(PowerupView powerupView, Transform parent, PowerupScriptableObject powerupSO)
         {
             this.powerupView = Object.Instantiate(powerupView, parent);
             this.powerupView.SetController(this);
+            powerupView.SetPowerupSprite(powerupSO.PowerupSprite);
             this.powerupSO = powerupSO;
-            this.powerupView.SetPowerupSprite(powerupSO.PowerupSprite);
+        }
+
+        public void ConfigurePowerup()
+        {
+            powerupView.gameObject.SetActive(true);
+        }
+
+        public void StartTimer()
+        {
+            if (GameService.Instance.GameManager.GetGameState() == GameStates.PLAY)
+            {
+                if (timer < powerupSO.MaxTime)
+                    timer += Time.deltaTime;
+                else
+                    ReturnToPool();
+            }
         }
 
         public void MovePowerup()
@@ -33,6 +49,7 @@ namespace NebulaNexus.Powerup
 
         private void ReturnToPool()
         {
+            timer = 0f;
             powerupView.gameObject.SetActive(false);
             GameService.Instance.PowerupService.ReturnPowerup(this);
         }
