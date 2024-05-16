@@ -18,5 +18,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   BulletTag: Player
-  MaxHealth: 100
-  Damage: 10
+  Damage: 2
