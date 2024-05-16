@@ -9,5 +9,11 @@
         public void SetGameState(GameStates gameState) => this.gameState = gameState;
 
         public GameStates GetGameState() => gameState;
+
+        public void OnGameOver()
+        {
+            SetGameState(GameStates.OVER);
+            GameService.Instance.EventService.OnGameOver.Invoke();
+        }
     }
 }
