@@ -13,7 +13,7 @@ namespace NebulaNexus.Bullet
         public override void ConfigureBullet(Transform spawnPosition)
         {
             bulletView.transform.localRotation = spawnPosition.rotation;
-            bulletView.gameObject.layer = 1 << bulletSO.BulletLayer;
+            bulletView.gameObject.layer = 7 << bulletSO.BulletLayer;
             bulletView.gameObject.tag = bulletSO.BulletTag;
             base.ConfigureBullet(spawnPosition);
         }
