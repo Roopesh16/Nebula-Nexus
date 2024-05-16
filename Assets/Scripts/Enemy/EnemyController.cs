@@ -21,12 +21,17 @@ namespace NebulaNexus.Enemy
             this.enemyView.SetController(this);
             this.enemySO = enemySO;
             stateMachine = new(this);
-            stateMachine.ChangeState(NebulaNexus.Enemy.StateMachine.States.IDLE);
+            SubscribeEvents();
         }
+
+        private void SubscribeEvents() => GameService.Instance.EventService.OnPlayClick.AddListener(SetToIdle);
 
         public void Update()
         {
-            stateMachine?.Update();
+            if (GameService.Instance.GameManager.GetGameState() == GameStates.PLAY)
+                stateMachine?.Update();
         }
+
+        private void SetToIdle() => stateMachine.ChangeState(NebulaNexus.Enemy.StateMachine.States.IDLE);
     }
 }
