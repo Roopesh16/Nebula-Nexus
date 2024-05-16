@@ -32,7 +32,6 @@ namespace NebulaNexus.Bullet
         {
             bulletView.gameObject.SetActive(true);
             bulletView.transform.localPosition = spawnPosition.position;
-            bulletView.transform.localRotation = spawnPosition.parent.rotation;
             bulletView.StartTimerCoroutine();
             canMove = true;
         }
@@ -52,8 +51,7 @@ namespace NebulaNexus.Bullet
         /// <param name="other"></param>
         public virtual void OnTrigger(GameObject other)
         {
-            GameService.Instance.GameManager.SetGameState(GameStates.OVER);
-            GameService.Instance.EventService.OnGameOver.Invoke();
+
         }
 
         /// <summary>
