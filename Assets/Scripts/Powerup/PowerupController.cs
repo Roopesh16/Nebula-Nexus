@@ -20,7 +20,7 @@ namespace NebulaNexus.Powerup
             this.powerupSO = powerupSO;
         }
 
-        public void ConfigurePowerup(Transform parent)
+        public virtual void ConfigurePowerup(Transform parent)
         {
             powerupView.gameObject.SetActive(true);
             powerupView.transform.position = parent.position;
