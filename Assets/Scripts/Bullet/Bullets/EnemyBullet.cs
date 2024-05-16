@@ -30,6 +30,7 @@ namespace NebulaNexus.Bullet
             if (other.CompareTag("Player"))
             {
                 other.GetComponent<PlayerView>().DecreaseHealth(bulletSO.Damage);
+                base.OnTrigger(other);
             }
         }
     }

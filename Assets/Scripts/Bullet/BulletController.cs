@@ -51,7 +51,8 @@ namespace NebulaNexus.Bullet
         /// <param name="other"></param>
         public virtual void OnTrigger(GameObject other)
         {
-
+            bulletView.StopAllCoroutines();
+            ReturnToPool();
         }
 
         /// <summary>
