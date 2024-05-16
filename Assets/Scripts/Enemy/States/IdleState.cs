@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using NebulaNexus.Enemy.StateMachine;
+using NebulaNexus.Main;
 
 namespace NebulaNexus.Enemy.States
 {
@@ -26,6 +27,8 @@ namespace NebulaNexus.Enemy.States
         }
 
         public void OnStateExit()
-        { }
+        {
+            GameService.Instance.EventService.OnEnemyActive.Invoke();
+        }
     }
 }
