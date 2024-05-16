@@ -1,5 +1,6 @@
 ﻿using NebulaNexus.Enemy;
 using NebulaNexus.Interfaces;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace NebulaNexus.Player
@@ -53,9 +54,11 @@ namespace NebulaNexus.Player
         private void ShootInput()
         {
             if (Input.GetMouseButton(0))
-                playerController.ShootBullet(spawnPosition);
+                playerController.ShootBullet();
         }
 
         public void DecreaseHealth(int damage) => playerController.DecreaseHealth(damage);
+
+        private void OnTriggerEnter2D(Collider2D other) => playerController.OnTrigger(other.gameObject);
     }
 }
