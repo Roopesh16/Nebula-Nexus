@@ -6,7 +6,19 @@ namespace NebulaNexus.Player
 {
     public class PlayerView : MonoBehaviour, IDamage
     {
+        [Header("Default")]
         [SerializeField] private Transform spawnPosition;
+
+        [Header("Double")]
+        [SerializeField] private List<Transform> doubleSpawns = new();
+
+        [Header("Multiple")]
+        [SerializeField] private List<Transform> multipleSpawns = new();
+
+        public Transform DefaultSpawn => spawnPosition;
+        public List<Transform> DoubleSpawns => doubleSpawns;
+        public List<Transform> MultipleSpawns => multipleSpawns;
+
         private PlayerController playerController;
 
         /// <summary>
