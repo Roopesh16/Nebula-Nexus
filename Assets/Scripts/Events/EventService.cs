@@ -10,6 +10,7 @@
         {
             OnPlayClick = new EventController();
             OnEnemyActive = new EventController();
+            OnGameOver = new EventController();
         }
     }
 }
