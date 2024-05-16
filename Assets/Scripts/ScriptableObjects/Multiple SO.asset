@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PowerupType: 1
   PowerupSprite: {fileID: 21300000, guid: 18704b7051a334b4a8200a0c818b9e02, type: 3}
-  MoveSpeed: 2
+  MoveSpeed: 3
+  MaxTime: 6
