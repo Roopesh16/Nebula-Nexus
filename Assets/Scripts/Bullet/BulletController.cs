@@ -20,7 +20,7 @@ namespace NebulaNexus.Bullet
         {
             bulletView = Object.Instantiate(bulletPrefab, parent);
             bulletView.SetController(this);
-            bulletView.SetupBulletView(bulletSO.bulletSprite);
+            bulletView.SetupBulletView(bulletSO.BulletSprite);
             this.bulletSO = bulletSO;
         }
 
@@ -43,7 +43,7 @@ namespace NebulaNexus.Bullet
         public virtual void MoveBullet()
         {
             if (canMove)
-                bulletView.transform.Translate(bulletView.transform.up * bulletSO.moveSpeed * Time.deltaTime);
+                bulletView.transform.Translate(bulletView.transform.up * bulletSO.MoveSpeed * Time.deltaTime);
         }
 
         /// <summary>

@@ -11,7 +11,7 @@ namespace NebulaNexus.Bullet
 
         public override void MoveBullet()
         {
-            bulletView.transform.Translate(bulletSO.moveSpeed * Time.deltaTime * -bulletView.transform.up);
+            bulletView.transform.Translate(bulletSO.MoveSpeed * Time.deltaTime * -bulletView.transform.up);
         }
 
         public override void OnTrigger(GameObject other)
