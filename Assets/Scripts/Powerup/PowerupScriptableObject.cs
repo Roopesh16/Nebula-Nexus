@@ -8,6 +8,7 @@ namespace NebulaNexus.Powerup
     {
         public PowerupType PowerupType;
         public Sprite PowerupSprite;
-        public float MoveSpeed = 2f;
+        public float MoveSpeed = 6f;
+        public float MaxTime = 2f;
     }
 }
