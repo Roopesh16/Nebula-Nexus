@@ -11,9 +11,9 @@ namespace NebulaNexus.Powerup
         private float delayTime;
         private List<Transform> spawnPositions = new();
         private PowerupPool powerupPool;
-
         private float timer = 0f;
-
+        private const int MIN_VAL = 0;
+        private const int MAX_VAL = 100;
 
         public PowerupService(PowerupView powerupPrefab, float delayTime, PowerupSOs powerupSOs, List<Transform> spawnPositions)
         {
@@ -54,15 +54,15 @@ namespace NebulaNexus.Powerup
             switch (typeRand)
             {
                 case PowerupType.DOUBLE:
-                    powerupController = powerupPool.GetPowerup<DoublePowerup>
-                        (PowerupType.DOUBLE, spawnPositions[posRand], powerupSOs.DoubleSO);
-                    powerupController.ConfigurePowerup();
+                    PowerupController doublePowerup = powerupPool.GetPowerup<DoublePowerup>
+                        (spawnPositions[posRand], powerupSOs.DoubleSO);
+                    doublePowerup.ConfigurePowerup(spawnPositions[posRand]);
                     break;
 
                 case PowerupType.MULTIPLE:
-                    powerupController = powerupPool.GetPowerup<MultiplePowerup>
-                        (PowerupType.MULTIPLE, spawnPositions[posRand], powerupSOs.MultipleSO);
-                    powerupController.ConfigurePowerup();
+                    PowerupController multiplePowerup = powerupPool.GetPowerup<MultiplePowerup>
+                        (spawnPositions[posRand], powerupSOs.MultipleSO);
+                    multiplePowerup.ConfigurePowerup(spawnPositions[posRand]);
                     break;
             }
         }
